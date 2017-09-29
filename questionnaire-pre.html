@@ -1,0 +1,163 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>CS4249 Assignment 1</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/form.css">
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html">Welcome</a></li>
+                        <li class="active"><a href="questionnaire-pre.html">Pre Questionnaire</a></li>
+                        <li><a href="instructions.html">Instructions</a></li>
+                        <li><a href="experiment.html">Experiment</a></li>
+                        <li><a href="questionnaire-post.html">Post Questionnaire</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+          <div class="form-body">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h1>Pre-Experiment Questionnaire</h1>
+                    <hr>
+                    <p>This part of the interface collects whatever pre-experiment information. Please come up with a basic questionnaire to help you to gather participant information. The purpose of this questionnaire is to report the participant data and convince readers that you have picked an appropriate target user group and the result has certain generalizability.</p>
+
+                    <p>Please put all information needed for participant: <span class="js-pid pid"></span></p>
+
+                    <form id="pre-expt-form">
+                        <div class="form-group">
+                            <label for="q1">Question 1 - Please state your name</label>
+                            <input type="text" class="form-control" id="q1" name="name" placeholder="Enter name">
+                        </div>
+                        <div class="form-group">
+                            <label for="q2">Question 2 - Please state your age</label>
+                            <input type="text" class="form-control" id="q2" name="age" placeholder="Enter age">
+                        </div>
+                        <div class="form-group">
+                            <label for="q3">Question 3 - Please state your course of study</label>
+                            <input type="text" class="form-control" id="q3" name="degree" placeholder="Enter course of study">
+                        </div>
+                        <div class="form-group">
+                            <label for="q4">Question 4 - Please rate your familiarity with using a keyboard.</label>
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="familiarity" id="optionsRadios1" value="1">
+                                Not Familiar
+                              </label>
+                            </div>
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="familiarity" id="optionsRadios2" value="2">
+                                Barely Familiar
+                              </label>
+                            </div>
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="familiarity" id="optionsRadios2" value="3">
+                                Neutral
+                              </label>
+                            </div>
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="familiarity" id="optionsRadios2" value="4">
+                                Familiar
+                              </label>
+                            </div>
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="familiarity" id="optionsRadios2" value="5">
+                                Very Familiar
+                              </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="q5">Question 5 - What operating system do you usually use?</label>
+                            <div class="checkbox">
+                              <label>
+                                <input type="checkbox" name="OS" value="windows">
+                                Windows
+                              </label>
+                            </div>
+                            <div class="checkbox">
+                              <label>
+                                <input type="checkbox" name="OS" value="macOs">
+                                MacOS
+                              </label>
+                            </div>
+                            <div class="checkbox">
+                              <label>
+                                <input type="checkbox" name="OS" value="linux">
+                                Linux
+                              </label>
+                            </div>
+                            <div class="checkbox">
+                              <label>
+                                <input type="checkbox" name="OS" value="others">
+                                Other operating system
+                              </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="q6">Question 6 - How would you rate your skill level in editing Microsoft Word documents?</label>
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="skill-level" id="optionsRadios1" value="1">
+                                Novice
+                              </label>
+                            </div>
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="skill-level" id="optionsRadios2" value="2">
+                                Intermediate
+                              </label>
+                            </div>
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="skill-level" id="optionsRadios2" value="3">
+                                Experienced
+                              </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                    </form>
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <script src="js/vendor/jquery-1.11.2.min.js"></script>
+        <script src="js/plugins.js"></script>
+        <script src="js/DataStorage.js"></script>
+        <script src="js/ACPToolKit.js"></script>
+        <script src="js/main.js"></script>
+
+        <script>
+            $(function () {
+                $('#pre-expt-form').submit(function (event) {
+                    event.preventDefault();
+                    var formResponses = $(this).serializeArray();
+                    // Do your own form validation here.
+                    ACPToolKit.downloadFormData(formResponses, 'pre');
+                    window.location = 'instructions.html';
+                });
+            });
+        </script>
+    </body>
+</html>
