@@ -89,7 +89,7 @@
             var totalNumberOfTrials;
             var headers = ['Participant id', 'Technique', 'Granularity', 'Text Size',
                             'Trial no', 'Stimuli', 'User Response', 'Trial Start Time',
-                            'Trial End Time', 'Trial Time', 'Accuracy', 'Letters per Second'];
+                            'Trial End Time', 'Trial Time', 'Accuracy', 'Response Length', 'Letters per Second'];
             var trialData = [];
             var pid;
 
@@ -136,11 +136,12 @@
                   var trialDuration = (trialNum % 12 === 0) ? trialResult.duration - 60000 : trialResult.duration;
                   var trialDurationInSeconds = trialDuration / 1000;
                   var accuracy = stimuli === userResponse ? 1 : 0;
-                  var lettersPerSecond = userResponse.length / trialDurationInSeconds;
+                  var responseLength = userResponse.length;
+                  var lettersPerSecond = responseLength / trialDurationInSeconds;
 
                   var row = [pid, technique, granularity, textType, trialNum,
-                              stimuli, userResponse, trialStartTime,
-                              trialEndTime, trialDuration, accuracy, lettersPerSecond];
+                              stimuli, userResponse, trialStartTime, trialEndTime,
+                               trialDuration, accuracy, responseLength, lettersPerSecond];
                   trialData.push(row);
                 }
 
