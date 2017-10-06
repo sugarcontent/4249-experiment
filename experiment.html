@@ -133,7 +133,7 @@
                   var userResponse = trialResult.user_response;
                   var trialStartTime = trialResult.start_time;
                   var trialEndTime = trialResult.end_time;
-                  var trialDuration = (trialNum % 12 === 0) ? trialResult.duration - 60000 : trialResult.duration;
+                  var trialDuration = (trialNum % 12 === 0 && trialNum !== 108) ? trialResult.duration - 60000 : trialResult.duration;
                   var trialDurationInSeconds = trialDuration / 1000;
                   var accuracy = stimuli === userResponse ? 1 : 0;
                   var responseLength = userResponse.length;
